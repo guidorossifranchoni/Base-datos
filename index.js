@@ -236,3 +236,26 @@ app.delete("/paciente/:id",function(req,res){
     },2000);
     
 });
+app.post("/login",function(req,res){
+  setTimeout(function(){
+      console.log("Llego al servidor "+JSON.stringify(req.body));
+      
+     
+      if(req.body.nombre!=undefined && req.body.id!=undefined){
+          if(req.body.nombre==="nombre"&&req.body.id==="1234"){
+              console.log("Sale del servidor "+"{'type': 'User'}")
+              res.send({'type': 'User'});    
+          }else if(req.body.nombre==="admin"&&req.body.id==="1234"){
+              console.log("Sale del servidor "+"{'type': 'Admin'}")
+              res.send({'type': 'Admin'});    
+          }else{
+              console.log("Sale del servidor "+"{'type': 'error'}")
+              res.send({'type': 'error'});
+          }
+          return;
+      }
+      console.log("Sale del servidor "+"{'type': 'error'}")
+      res.send({'type': 'error'});
+  },2000);
+  
+});
